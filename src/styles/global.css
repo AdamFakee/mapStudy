@@ -26,3 +26,32 @@
 .scroll-y-hidden::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+.hidden-seccond-line:nth-child(n+6) {
+  display: none;
+}
+
+/* hiệu ứng cuộn trangtrang */
+.scroll-container {
+  max-height: 0;  /* Ban đầu ẩn, chiều cao bằng 0 */
+  overflow: hidden;  /* Ẩn phần nội dung thừa */
+  transition: all 1s ease-in-out;  /* Hiệu ứng dãn rộng chiều cao */
+
+}
+
+.scroll-container.open {
+  max-height: 200px;  /* Khi mở, chiều cao sẽ dãn rộng. Bạn có thể điều chỉnh max-height này tuỳ ý */
+}
+
+/* end */
+
+/* hiệu ứng xoay 180 độ */
+.rotate {
+  transition: transform 0.5s ease; /* Hiệu ứng xoay mượt mà */
+  transform: rotate(0deg); /* Ban đầu không xoay */
+}
+.rotate.open {
+  transform: rotate(180deg); /* Xoay 180 độ */
+}
+
+/* end */

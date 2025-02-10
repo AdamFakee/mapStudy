@@ -5,3 +5,8 @@ export interface Course {
     title: string,
     class: string
 }
+
+export interface Category {
+    id: string,
+    title: string
+}

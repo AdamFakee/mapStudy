@@ -8,7 +8,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-test bg-background">
+      <body className="font-beVnPro bg-background">
         <Header/>
         <div className='ml-[24px] mr-[28px]'>
           <div className='h-[56px]'></div>

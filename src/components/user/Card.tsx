@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-import { Course } from '@/types/definition';
+import { Course, Category } from '@/types/definition';
 
 export const CourseCard = ({ item }: { item: Course }) => {
     return (
@@ -41,5 +41,21 @@ export const CourseCard = ({ item }: { item: Course }) => {
                 </div>
             </div>
         </Link>
+    )
+}
+
+export const CategoryCard = ({ item }: { item: Category }) => {
+    return (
+        <div className="w-full flex flex-col gap-2">
+            <div 
+                className="w-full aspect-video rounded-lg relative" 
+                style={{ background:'linear-gradient(to bottom right, #112D60,#B6C0C5)' }}
+            >
+                <p className="font-bold text-xl opacity-40 w-[80%] text-white absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-center"> {item.title} </p>
+            </div>
+            <div className="flex flex-col gap-1">
+                <p className="font-medium line-clamp-2 text-secondary-typo"> {item.title} </p>
+            </div>
+        </div>
     )
 }
