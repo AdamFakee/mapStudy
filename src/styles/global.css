@@ -55,3 +55,9 @@
 }
 
 /* end */
+
+/* set fixed height */
+.fixedHeight {
+  height: calc(-56px + 100vh);
+}
+/* end */
