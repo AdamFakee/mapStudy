@@ -15,9 +15,9 @@ function page() {
     return (
         <div
             style={{
-                maxHeight: 'calc(-56px + 100vh)',
+                minHeight: 'calc(-56px + 100vh)',
             }}
-            className='space-y-5 overflow-y-auto scroll-y-hidden sm:mb-0 mb-[15%]'
+            className='space-y-5 sm:mb-0 mb-[15%]'
         >
             {/* breck crum */}
             <BreakCrum data={dataBreackCrum}/>
