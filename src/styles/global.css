@@ -60,4 +60,7 @@
 .fixedHeight {
   height: calc(-56px + 100vh);
 }
+.minHeight {
+  min-height: calc(-56px + 100vh);
+}
 /* end */

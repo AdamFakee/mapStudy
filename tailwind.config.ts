@@ -20,6 +20,9 @@ export default {
       fontFamily: {
         beVnPro: ["Be Vietnam Pro", "serif"]
       },
+      screens: {
+        'md': '768px'
+      }
     },
   },
   plugins: [],
