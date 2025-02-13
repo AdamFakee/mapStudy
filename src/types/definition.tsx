@@ -27,3 +27,8 @@ export interface SelectOption {
     readonly value: string,
     readonly label: string
 }
+
+export interface Subject {
+    id: number,
+    title: string
+  }

@@ -4,6 +4,7 @@ import React, { useRef, useState } from 'react'
 import { CategoryCard } from '../Card'
 import Link from 'next/link'
 import { IoIosArrowUp } from "react-icons/io";
+import { TbXxx } from 'react-icons/tb'
 
 const TitleComponent = (
         { title, buttonTitle, closeTitle, handleOpen, isOpen}: 
