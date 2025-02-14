@@ -10,7 +10,7 @@ function BreakCrum({ data }: { data: BreakCrumTypes[] }) {
         <div className='inline-flex items-center gap-2'>
             <div className='inline-flex items-center gap-1.5'>
                 <Link
-                    href='#'
+                    href='/'
                     key={'xxx'}
                 >
                     <RiHome9Line/>
@@ -26,7 +26,7 @@ function BreakCrum({ data }: { data: BreakCrumTypes[] }) {
                             className='inline-flex items-center gap-1.5'
                         >
                             <Link
-                                href='#'
+                                href={item.href}
                             >
                                 <span className={`${isLastItem ? 'text-primary' : ''}`}>{item.title}</span>
                             </Link>

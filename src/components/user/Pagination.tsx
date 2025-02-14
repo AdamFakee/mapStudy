@@ -16,16 +16,14 @@ function Pagination({ totalPage }: { totalPage: number }) {
     }, [totalPage])
 
     const handleSearch = ( page: number ) => {
-        console.log(page)
         const queryParams = new URLSearchParams(searchParams.toString())
         if(page) {
-            console.log('ok')
             queryParams.set('page', page + '')
         };
         router.push(`/courses?${queryParams}`)
     }
     return (
-        <div className="flex items-center mt-6 justify-center">
+        <div className={`items-center mt-6 justify-center ${totalPage <= 1 ? 'hidden' : 'flex'}`}>
             <nav className="relative z-0 flex justify-end rounded-md -space-x-px flex-wrap" aria-label="Pagination">
                 <div className="flex items-center gap-1.5">
                 
