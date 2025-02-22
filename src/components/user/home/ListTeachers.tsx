@@ -5,6 +5,9 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
+import { domain } from "@/constants/domain";
+import { useEffect, useState } from "react";
+import { ApiResponse, fetchApi } from "@/customLib/fetchApi";
 
 interface Teacher {
   id: string;
@@ -41,7 +44,33 @@ const TitleComponent = () => {
     )
 }
 
-function ListTeachers({ data }: { data: Teacher[] }) {
+
+
+interface resultFetch extends ApiResponse {
+  metadata: {
+    teachers: Teacher[];
+  };
+}
+
+
+function ListTeachers() {
+  const [ teachers, setTeachers ] = useState<Teacher[]>(); 
+  const url: string = domain + '/teacher/getAllTeachers?limit=7';
+  
+  useEffect(() => {
+    const fetchTeachers = async () => {
+      try {
+        const result = await fetchApi<resultFetch>({ url });
+        setTeachers(result.metadata.teachers);
+
+      } catch (error) {
+        console.error("Failed to fetch teachers:", error);
+      }
+    };
+
+    fetchTeachers();
+  }, [url]);
+  
   return (
     <div className="relative w-full space-y-3">
         <TitleComponent/>
@@ -54,13 +83,15 @@ function ListTeachers({ data }: { data: Teacher[] }) {
             1145: { slidesPerView: 4.5, spaceBetween: 0 },
           }}
         >
-            {data.map((item) => (
-            <SwiperSlide key={item.id}>
-                <Link href="#">
-                <TeacherCard item={item} />
-                </Link>
-            </SwiperSlide>
-            ))}
+          {
+            teachers?.map((item) => (
+              <SwiperSlide key={item.id}>
+                  <Link href="#">
+                    <TeacherCard item={item} />
+                  </Link>
+              </SwiperSlide>
+              ))
+          }
         </Swiper>
     </div>
   );

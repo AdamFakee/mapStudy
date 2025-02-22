@@ -1,9 +1,10 @@
 export interface Course {
-    id: string,
-    owner: string, 
-    thumbnail: string,
-    title: string,
-    class: string
+    teacherId: number,
+    teacherName: string, 
+    teacherThubnail: string,
+    courseThumbnail: string,
+    courseName: string,
+    courseId: number
 }
 
 export interface Category {
