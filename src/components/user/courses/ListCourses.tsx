@@ -1,19 +1,51 @@
+'use client';
 import { Course } from '@/types/definition'
-import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CourseCard } from '../Card'
 import Pagination from '../Pagination'
+import { ApiResponse, fetchApi } from '@/customLib/fetchApi';
+import { useQueryParams } from '@/hooks/useQueryParams';
+import { domain } from '@/constants/domain';
 
-function ListCourses({ items }: { items: Course[] }) {
+interface resultFetch extends ApiResponse {
+    metadata: {
+        courses: Course[];
+        pagination: {
+            totalPages: number;
+            currentPage: number;
+        }
+    };
+}
+
+function ListCourses({ api }: { api: string}) {
+    const [totalPages, setTotalPages] = useState<number>(1);
+    const [courses, setCourses] = useState<Course[]>();
+
+    // call api
+    const query: string = useQueryParams();
+    useEffect(() => {
+        const url: string = domain + `${api}?${query}`;
+        const fetchCourse = async () => {
+            try {
+                const res = await fetchApi<resultFetch>({ url });
+                setCourses(res?.metadata?.courses || []);
+                setTotalPages(res?.metadata?.pagination?.totalPages || 1);
+            } catch (error) {
+                console.log('err::::',error)
+            }
+        }
+        fetchCourse();
+    }, [query, api])
+    
     return (
         <div>
             {/* list courses */}
             <div className='grid grid-cols-4 gap-x-3 gap-y-6'>
                 {
-                    items.map(( item ) => {
+                    courses?.map(( item ) => {
                         return (
                             <div
-                                key={item.id}
+                                key={item.courseId}
                             >
                                 <CourseCard item={item}/>
                             </div>
@@ -22,7 +54,7 @@ function ListCourses({ items }: { items: Course[] }) {
                 }
             </div>
             {/* pagintion */}
-            <Pagination totalPage={5}/>
+            <Pagination totalPage={totalPages}/>
         </div>
     )
 }

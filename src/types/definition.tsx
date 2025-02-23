@@ -1,15 +1,16 @@
 export interface Course {
-    teacherId: number,
-    teacherName: string, 
-    teacherThubnail: string,
+    // có thể chỉ lấy mỗi khóa học mà không cần đến teacher 
+    teacherId?: number,
+    teacherName?: string, 
+    teacherThubnail?: string,
     courseThumbnail: string,
     courseName: string,
     courseId: number
 }
 
 export interface Category {
-    id: string,
-    title: string
+    id: number,
+    name: string
 }
 
 export interface New {

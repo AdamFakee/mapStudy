@@ -8,7 +8,7 @@ import { Course, Category } from '@/types/definition';
 export const CourseCard = ({ item }: { item: Course }) => {
     return (
         <Link
-            href="#"
+            href={`/courses/${item.courseId}`}
             className="w-full text-secondary-typo outline-none px-2 tab:px-3 lap:px-4 inline-block"
         >
             <div className="relative rounded-[16px] overflow-hidden">
@@ -51,10 +51,10 @@ export const CategoryCard = ({ item }: { item: Category }) => {
                 className="w-full aspect-video rounded-lg relative" 
                 style={{ background:'linear-gradient(to bottom right, #112D60,#B6C0C5)' }}
             >
-                <p className="font-bold text-xl opacity-40 w-[80%] text-white absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-center"> {item.title} </p>
+                <p className="font-bold text-xl opacity-40 w-[80%] text-white absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 text-center"> {item.name} </p>
             </div>
             <div className="flex flex-col gap-1">
-                <p className="font-medium line-clamp-2 text-secondary-typo"> {item.title} </p>
+                <p className="font-medium line-clamp-2 text-secondary-typo"> {item.name} </p>
             </div>
         </div>
     )

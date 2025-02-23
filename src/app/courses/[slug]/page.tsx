@@ -11,7 +11,7 @@ const dataBreackCrum: BreakCrumTypes[] = [
   },
   {
     href: '',
-    title: 'news'
+    title: 'detail'
   }
 ]
 

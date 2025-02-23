@@ -11,7 +11,7 @@ export interface ApiResponse {
 }
 
 export const fetchApi = async <T>({ url, opts }: { url: string, opts?: fetchOptions }): Promise<T> => {
-    const res = await fetch(url, {
+    const res =  await fetch(url, {
         method: opts?.method || 'GET',
         headers: {
             'Content-type': 'application/json',
@@ -19,7 +19,15 @@ export const fetchApi = async <T>({ url, opts }: { url: string, opts?: fetchOpti
         },
         body: opts?.method !== "GET" ? JSON.stringify(opts?.body) : undefined,
     });
+    console.log('res::::', res)
 
-    const result: T = await res.json();
+    // gặp lỗi 
+    if (!res.ok) {
+        const errorResponse = await res.json();
+        console.log('err:::',errorResponse)
+        return errorResponse;
+    }
+    // nếu gặp lỗi 204 
+    const result: T = res.status === 204 ? {} : await res.json();
     return { ...result };
 }

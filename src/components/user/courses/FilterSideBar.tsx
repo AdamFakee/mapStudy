@@ -1,6 +1,6 @@
 'use client'
 
-import React, { Dispatch, useEffect, useReducer, useState } from 'react'
+import React, { Dispatch, useReducer, useState } from 'react'
 import Search from './Search'
 import {ButtonLight, Button} from './Button'
 import { Subject } from '@/types/definition'
@@ -50,22 +50,29 @@ const SubjectComponent = ({ subjects, filter, dispatch }: subjectProps) => {
 
 function FilterSideBar() {
     const [searchValue, setSearchValue] = useState<string>('');
-    const [subjects, setSubjects] = useState<Subject[]>(dataSubjects)
     const [filters, dispatchFilters ] = useReducer(filterCourses, []);
     const router = useRouter();
     const searchParams = useSearchParams()
+
+    // reducer
     const handleResetFilter = () => {
         dispatchFilters({
             type: ActionType.RESET
         })
     }
+    // gán query cho url
     const handleSearch = (filters: FilterCoursesType[]) => {
         const queryParams = new URLSearchParams(searchParams.toString());
         if( searchValue.trim() ) {
             queryParams.set('search', searchValue.trim());
+        } else {
+            queryParams.delete('search');
         }
+        
         if(filters.length) {
             queryParams.set('filters', filters.join(','));
+        } else {
+            queryParams.delete('filters');
         }
 
         router.push(`/courses?${queryParams.toString()}`, {
@@ -78,11 +85,11 @@ function FilterSideBar() {
             <Search placeHolder='Nhập tên khóa học' searchValue={searchValue} setSearchValue={setSearchValue}/>
             <div className='mb-2'>
                 <div className="text-lg font-medium my-2">Môn học</div>
-                <SubjectComponent subjects={subjects} filter={filters} dispatch={dispatchFilters}/>
+                <SubjectComponent subjects={dataSubjects} filter={filters} dispatch={dispatchFilters}/>
             </div>
             <div className='flex justify-end items-center gap-2'>
-                <ButtonLight title='Đặt lại' fn={handleResetFilter} isActive={filters.length > 0}/>
-                <Button title='Lọc' fn={() => handleSearch(filters)} isActive={filters.length > 0}/>
+                <ButtonLight title='Đặt lại' fn={handleResetFilter} isActive={filters.length > 0 || searchValue.length > 0}/>
+                <Button title='Lọc' fn={() => handleSearch(filters)} isActive={filters.length > 0 || searchValue.length > 0}/>
             </div>
         </div>
     )

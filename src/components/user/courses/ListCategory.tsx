@@ -1,33 +1,66 @@
 'use client'
 import { Category } from '@/types/definition'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { CategoryCard } from '../Card'
 import Link from 'next/link'
-import { IoIosArrowUp } from "react-icons/io";
-import { TbXxx } from 'react-icons/tb'
+import { ApiResponse, fetchApi } from '@/customLib/fetchApi'
+import { domain } from '@/constants/domain'
 
 const TitleComponent = (
-        { title, buttonTitle, closeTitle, handleOpen, isOpen}: 
-        { title: string, buttonTitle: string, closeTitle: string, handleOpen: () => void, isOpen: boolean }
+        { title, buttonTitle, closeTitle, handleOpen, isOpen, isShowSeeMore }: 
+        { title: string, buttonTitle: string, closeTitle: string, handleOpen: () => void, isOpen: boolean, isShowSeeMore: boolean}
     ) => {
     return (
         <div
             className='flex justify-between items-center'
         >
             <p className='font-semibold text-xl text-secondary-typo'>{title}</p>
-            <button             
-                onClick={handleOpen}
-                className='inline-flex justify-end items-center gap-2'
-            >
-                <p>{isOpen == false ? buttonTitle : closeTitle }</p>
-                <IoIosArrowUp className={`rotate ${ isOpen == true ? 'open' : ''}`}/>
-            </button>
+            {
+                isShowSeeMore &&
+                    <button             
+                        onClick={handleOpen}
+                        className='inline-flex justify-end items-center gap-2'
+                    >
+                        <p>{isOpen == false? buttonTitle : closeTitle }</p>
+                    </button>
+            }
         </div>
     )
 }
-function ListCategory({ data }: { data: Category[] }) {
+
+interface resultFetch extends ApiResponse {
+    metadata: {
+        categories: Category[];
+    }
+}
+
+function ListCategory() {
     const [isOpen, setIsOpen] = useState<boolean>(false)
+    const [isShowSeeMore, setIsShowSeeMore] = useState<boolean>(false)
     const handleOpen = () => setIsOpen(!isOpen)
+    const [ categories, setCategories ] = useState<Category[]>();
+
+    // call api
+    const url = domain + '/category?limit=8';
+    useEffect(() => {
+        const fetchCategory = async () => {
+            try {
+                const res: resultFetch = await fetchApi({ url });
+                setCategories(res.metadata.categories);
+                
+                // Check if there are more than 5 categories to show see more button
+                if (res.metadata.categories.length > 5) {
+                    setIsShowSeeMore(true);
+                } else {
+                    setIsShowSeeMore(false);
+                }
+            } catch (error) {
+                console.error("Failed to fetch teachers:", error);
+            }
+        }
+        fetchCategory();
+    }, [url])
+
 
     return (
         <div className='space-y-2'>
@@ -37,18 +70,21 @@ function ListCategory({ data }: { data: Category[] }) {
                 closeTitle="Thu gọn" 
                 handleOpen={handleOpen} 
                 isOpen={isOpen}
+                isShowSeeMore={isShowSeeMore}
             />
             <div className={`grid ${isOpen ? 'grid-rows-2' : 'grid-rows-1'} grid-cols-5 gap-3`}>
                 {
-                    data.map((item, index )=> {
-                        const checkLastItem = index === data.length - 1;
+                    categories?.map((item, index )=> {
+                        const checkLastItem = index === categories.length - 1;
                         return (
                             <Link
-                                href="#"
+                                href={`/courses/category/${item.id}`}
                                 key={item.id}
-                                className={`${isOpen ? 'open' : ''} ${checkLastItem ? 'scroll-container' : ''}`}
+
+                                // k show nút xem thêm => xóa luôn hiệu ứng cuộn trang
+                                className={`${isOpen ? 'open' : ''} ${checkLastItem && categories.length > 5 ? 'scroll-container' : ''}`}
                             >
-                            <CategoryCard item={item} />
+                                <CategoryCard item={item} />
                             </Link>
                         );
                     })

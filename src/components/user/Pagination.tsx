@@ -1,5 +1,5 @@
 'use client'
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import React, { useMemo, useState } from 'react';
 
 const CreateArray = ( range: number ) => {
@@ -11,6 +11,7 @@ function Pagination({ totalPage }: { totalPage: number }) {
     const searchParams = useSearchParams();
     const currentPage: string = searchParams.get('page') || '1';
     const router = useRouter();
+    const pathName = usePathname();
     useMemo(() => {
         setPages(CreateArray(totalPage)); // Update the pages state
     }, [totalPage])
@@ -19,8 +20,10 @@ function Pagination({ totalPage }: { totalPage: number }) {
         const queryParams = new URLSearchParams(searchParams.toString())
         if(page) {
             queryParams.set('page', page + '')
-        };
-        router.push(`/courses?${queryParams}`)
+        };        
+        router.replace(`${pathName}?${queryParams}`, {
+            scroll: false
+        })
     }
     return (
         <div className={`items-center mt-6 justify-center ${totalPage <= 1 ? 'hidden' : 'flex'}`}>

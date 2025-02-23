@@ -10,17 +10,17 @@ interface Props {
 
 const defaultItem: Props[] = [
     { title: 'Tất cả', classNumber: 'all' },
-    { title: 'Lớp 12', classNumber: '12' },
-    { title: 'Lớp 11', classNumber: '11' },
-    { title: 'Lớp 10', classNumber: '10' },
-    { title: 'Lớp 9', classNumber: '9' }
+    { title: 'Lớp 12', classNumber: '3' },
+    { title: 'Lớp 11', classNumber: '2' },
+    { title: 'Lớp 10', classNumber: '1' },
+    { title: 'Đại học', classNumber: '4' }
 ];
 
 function TopBar({ items = defaultItem }: { items?: Props[] }) {
     const router = useRouter();
     const searchParams = useSearchParams();
     
-    const classQuery = searchParams.get('class'); 
+    const classQuery = searchParams.get('_class'); 
     const [classPage, setClassPage] = useState<string>(classQuery ? classQuery : 'all');
 
     useEffect(() => {
@@ -32,7 +32,7 @@ function TopBar({ items = defaultItem }: { items?: Props[] }) {
     const handleSetClassSearchQuery = (classNumber: string) => {
         const queryParams = new URLSearchParams(searchParams.toString());
         if (classNumber.trim()) {
-            queryParams.set('class', classNumber.trim());
+            queryParams.set('_class', classNumber.trim());
         }
         router.push(`/courses?${queryParams.toString()}`, { scroll: false });
     };
