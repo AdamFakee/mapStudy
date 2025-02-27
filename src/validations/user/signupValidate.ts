@@ -8,7 +8,6 @@ const warnForEmptyInput = 'must be type something'
 // Tạo schema đăng ký sử dụng Zod
 export const signupValidate = z.object({
     fullName: z.string().min(2, { message: 'Full name length must be at least 2 characters' }),
-    accountName: z.string().min(5, { message: 'Account name length must be at least 5 characters' }),
     password: z.string().min(1, {message: warnForEmptyInput}).regex(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/, { message: 'password must be at least 8 characters, at least one letter and one number'}),
     confirmPassword: z.string().min(1, {message: warnForEmptyInput}),
     email: z.string().min(1, {message: warnForEmptyInput}).email({ message: 'Must be a valid email' }),

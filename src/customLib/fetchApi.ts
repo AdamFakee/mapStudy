@@ -6,7 +6,7 @@ export interface fetchOptions {
 }
 
 export interface ApiResponse {
-    status: number;
+    status?: number;
     message: string;
 }
 
@@ -15,16 +15,14 @@ export const fetchApi = async <T>({ url, opts }: { url: string, opts?: fetchOpti
         method: opts?.method || 'GET',
         headers: {
             'Content-type': 'application/json',
-            ...opts?.header,
+            ...(opts?.header instanceof Headers ? Object.fromEntries(opts.header.entries()) : opts?.header), // dùng cú pháp này do cái seperate object k hoạt động, ...opts?.headers k chạy :))) 
         },
         body: opts?.method !== "GET" ? JSON.stringify(opts?.body) : undefined,
     });
-    console.log('res::::', res)
 
     // gặp lỗi 
     if (!res.ok) {
         const errorResponse = await res.json();
-        console.log('err:::',errorResponse)
         return errorResponse;
     }
     // nếu gặp lỗi 204 

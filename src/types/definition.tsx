@@ -33,4 +33,22 @@ export interface SelectOption {
 export interface Subject {
     id: number,
     title: string
-  }
+}
+
+export interface User {
+    email: string,
+    isLogin: boolean
+}
+
+export interface Tokens {
+    accessToken: string;
+    refreshToken: string;
+}
+
+export interface AuthContextData {
+    user: User | null,
+    setUser: (user: User) => void,
+    handleLogin: ({ email, tokens }: { email: string, tokens: Tokens}) => Promise<void>;
+    handleLogout: () => Promise<void>;
+    handleGetToken: (key: string) => Promise<string>;
+}

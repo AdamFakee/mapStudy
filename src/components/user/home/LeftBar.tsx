@@ -11,6 +11,7 @@ import Image from "next/image";
 import { CustomIconMenu, CustomIconMobile } from "./leftBar/CustomIcon";
 import { CiMenuFries } from "react-icons/ci";
 import { useState } from "react";
+import { useAuthContext } from "@/contexts/AuthContext";
 
 // Định nghĩa kiểu dữ liệu cho menu items
 interface NavItem {
@@ -65,13 +66,15 @@ const Menu = () => {
 const LeftBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleOpenMenu: () => void = () => setIsOpen(!isOpen);
-  console.log('ok')
+  const { user } = useAuthContext();
 
   return (
     <>
       <div className="sticky overflow-y-auto scroll-y-hidden sm:block hidden" style={{ maxHeight: "calc(-56px + 100vh)"}}>
         {/* auth */}
-        <NavBar items={authNavItems} isEnd={false}/>
+        {
+          !user || user.isLogin === false && <NavBar items={authNavItems} isEnd={false}/>
+        }
         {/* nav bar */}
         <NavBar items={defaultNavItems} isEnd={false}/>
         {/* contact */}

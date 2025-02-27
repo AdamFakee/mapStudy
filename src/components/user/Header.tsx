@@ -1,11 +1,14 @@
+'use client'
 import { icon } from '@/constants/icon'
 import Image from 'next/image'
 import React from 'react'
 import Search from './home/header/Search'
 import NavBar from './home/header/Navbar'
-import TextLink from './home/header/TextLink'
+import TextLink, { TextLink_Logout } from './home/header/TextLink'
+import { useAuthContext } from '@/contexts/AuthContext'
 
 const Header = () => {
+    const { user } = useAuthContext();
     return (
         <header className='w-full relative z-30 bg-[#ffffff1A]'>
             <div className='fixed top-0 w-full backdrop-blur-md'>
@@ -29,11 +32,12 @@ const Header = () => {
                             <div className='lg:block hidden'>
                                 <TextLink href='#' text='Kích hoạt thẻ' isEnd={false}/>
                             </div>
-                            <TextLink href='#' text='Đăng ký' isEnd={false}/>
-                            <TextLink href='#' text='Đăng nhập' isEnd={true}/>
+                            <TextLink href='/signup' text='Đăng ký' isEnd={user?.isLogin || false} otherStyles={user?.isLogin ? 'hidden' : ''}/>
+                            <TextLink href='/login' text='Đăng nhập' isEnd={user?.isLogin || false} otherStyles={user?.isLogin ? 'hidden' : ''}/>
+                            <TextLink_Logout href='#' text='Đăng xuất' isEnd={ false} otherStyles={user?.isLogin ? '' : 'hidden'}/>
                         </div>
                     </div>
-                    </div>
+                </div>
             </div>
         </header>
     )
