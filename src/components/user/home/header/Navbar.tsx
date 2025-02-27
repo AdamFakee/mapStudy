@@ -14,11 +14,11 @@ interface NavItem {
 }
 
 // Danh sách các menu mặc định
-const defaultNavItems: NavItem[] = [
-  { href: "#", icon: <RiHome9Line className="w-6 h-6 text-gray-500" />, title: "Trang chủ" },
-  { href: "#", icon: <SiCoursera className="w-6 h-6 text-gray-500" />, title: "Khóa học" },
-  { href: "#", icon: <PiExamLight className="w-6 h-6 text-gray-500" />, title: "Thi Online" },
-  { href: "#", icon: <IoNewspaperOutline className="w-6 h-6 text-gray-500" />, title: "Tin tức" },
+export const defaultNavItems: NavItem[] = [
+  { href: "/", icon: <RiHome9Line className="w-6 h-6 text-gray-500" />, title: "Trang chủ" },
+  { href: "/courses", icon: <SiCoursera className="w-6 h-6 text-gray-500" />, title: "Khóa học" },
+  { href: "/exam", icon: <PiExamLight className="w-6 h-6 text-gray-500" />, title: "Thi Online" },
+  { href: "/news", icon: <IoNewspaperOutline className="w-6 h-6 text-gray-500" />, title: "Tin tức" },
 ];
 
 const NavBar = ({ items = defaultNavItems }: { items?: NavItem[] }) => {

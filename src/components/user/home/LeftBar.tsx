@@ -12,6 +12,7 @@ import { CustomIconMenu, CustomIconMobile } from "./leftBar/CustomIcon";
 import { CiMenuFries } from "react-icons/ci";
 import { useState } from "react";
 import { useAuthContext } from "@/contexts/AuthContext";
+import { defaultNavItems } from "./header/Navbar";
 
 // Định nghĩa kiểu dữ liệu cho menu items
 interface NavItem {
@@ -21,16 +22,16 @@ interface NavItem {
 }
 
 // Danh sách các menu mặc định
-const defaultNavItems: NavItem[] = [
-  { href: "#", icon: <RiHome9Line className="w-6 h-6 text-gray-500" />, title: "Trang chủ" },
-  { href: "#", icon: <SiCoursera className="w-6 h-6 text-gray-500" />, title: "Khóa học" },
-  { href: "#", icon: <PiExamLight className="w-6 h-6 text-gray-500" />, title: "Thi Online" },
-  { href: "#", icon: <IoNewspaperOutline className="w-6 h-6 text-gray-500" />, title: "Tin tức" },
-];
+// const defaultNavItems: NavItem[] = [
+//   { href: "#", icon: <RiHome9Line className="w-6 h-6 text-gray-500" />, title: "Trang chủ" },
+//   { href: "#", icon: <SiCoursera className="w-6 h-6 text-gray-500" />, title: "Khóa học" },
+//   { href: "#", icon: <PiExamLight className="w-6 h-6 text-gray-500" />, title: "Thi Online" },
+//   { href: "#", icon: <IoNewspaperOutline className="w-6 h-6 text-gray-500" />, title: "Tin tức" },
+// ];
 
 const authNavItems: NavItem[] = [
   {
-    href: "#", icon: <IoIosLogIn className="w-6 h-6 text-gray-500" />, title: "Đăng nhập"
+    href: "/login", icon: <IoIosLogIn className="w-6 h-6 text-gray-500" />, title: "Đăng nhập"
   }
 ]
 
