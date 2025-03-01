@@ -34,6 +34,7 @@ function LeftBar() {
         const fetchData = async () => {
             try {
                 const result = await fetchApi<resultFetch>({ url });
+                console.log(result)
                 setResult(result?.metadata || { detail_chapter: [], detail_course: []});
 
             } catch (error) {

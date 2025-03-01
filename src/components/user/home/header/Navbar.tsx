@@ -1,13 +1,12 @@
 import Link from "next/link";
 
-// Import các icon bạn cần
 import { RiHome9Line } from "react-icons/ri";
 import { SiCoursera } from "react-icons/si";
 import { PiExamLight } from "react-icons/pi";
 import { IoNewspaperOutline } from "react-icons/io5";
 
 // Định nghĩa kiểu dữ liệu cho menu items
-interface NavItem {
+export interface NavItem {
   href: string;
   icon: React.ReactNode;
   title: string

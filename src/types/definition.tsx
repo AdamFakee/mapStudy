@@ -30,6 +30,11 @@ export interface SelectOption {
     readonly label: string
 }
 
+export interface Chapter {
+    id: number,
+    title: string
+}
+
 export interface Subject {
     id: number,
     title: string
@@ -48,6 +53,7 @@ export interface Tokens {
 export interface AuthContextData {
     user: User | null,
     setUser: (user: User) => void,
+    isLoading: boolean,
     handleLogin: ({ email, tokens }: { email: string, tokens: Tokens}) => Promise<void>;
     handleLogout: () => Promise<void>;
     handleGetToken: (key: string) => Promise<string>;

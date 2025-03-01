@@ -17,7 +17,7 @@ interface resultFetch extends ApiResponse {
     };
 }
 
-function ListCourses({ api }: { api: string}) {
+function ListCourses({ api }: { api: string }) {
     const [totalPages, setTotalPages] = useState<number>(1);
     const [courses, setCourses] = useState<Course[]>();
 
@@ -32,11 +32,11 @@ function ListCourses({ api }: { api: string}) {
                 setTotalPages(res?.metadata?.pagination?.totalPages || 1);
             } catch (error) {
                 console.log('err::::',error)
-            }
+            } 
         }
         fetchCourse();
     }, [query, api])
-    
+
     return (
         <div>
             {/* list courses */}

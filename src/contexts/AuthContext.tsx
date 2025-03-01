@@ -8,6 +8,7 @@ const Context = createContext<AuthContextData>({} as AuthContextData);
 export const useAuthContext = () => useContext(Context);
 const AuthContext = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User>();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     useEffect(() => {
         const handleFirstLogin = async () => {
             let accessToken = "", refreshToken = "";
@@ -31,6 +32,8 @@ const AuthContext = ({ children }: { children: React.ReactNode }) => {
     
             } catch (error) {
                 console.error("Lỗi khi lấy token:", error);
+            } finally {
+                setIsLoading(false);
             }
             if (accessToken && refreshToken) {
                 const parsedAccessToken = parserJwtToken(accessToken);
@@ -108,7 +111,7 @@ const AuthContext = ({ children }: { children: React.ReactNode }) => {
         return token ? token : '';
     };
     return (
-        <Context.Provider value={{ user, setUser, handleGetToken, handleLogin, handleLogout }}>
+        <Context.Provider value={{ user, isLoading, setUser, handleGetToken, handleLogin, handleLogout }}>
             {children} 
         </Context.Provider>
     )

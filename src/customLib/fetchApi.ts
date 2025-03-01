@@ -23,6 +23,7 @@ export const fetchApi = async <T>({ url, opts }: { url: string, opts?: fetchOpti
     // gặp lỗi 
     if (!res.ok) {
         const errorResponse = await res.json();
+        console.error(errorResponse)
         return errorResponse;
     }
     // nếu gặp lỗi 204 

@@ -3,9 +3,11 @@ import React, { useState } from 'react'
 import { IoIosArrowUp } from "react-icons/io";
 import { Chapter } from './LeftBar';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 
 function ListExam({ chapter }: { chapter: Chapter}) {
+    const path = usePathname()
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const handleOpen = () => {
         setIsOpen(!isOpen);
@@ -24,7 +26,12 @@ function ListExam({ chapter }: { chapter: Chapter}) {
                     chapter.lessons.map(( lesson, index ) => {
                         return (
                             <Link
-                                href='#'
+                                href={{
+                                    pathname: path + '/lesson/' + lesson.lessonId,
+                                    query: {
+                                        title: lesson.lessonTitle
+                                    }
+                                }}
                                 key={index}
                             >
                                 <div className="w-full px-3 hover:bg-[#f3f3f3] duration-150 rounded-lg cursor-pointer flex justify-between flex-col gap-y-3">
