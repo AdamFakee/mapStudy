@@ -58,3 +58,16 @@ export interface AuthContextData {
     handleLogout: () => Promise<void>;
     handleGetToken: (key: string) => Promise<string>;
 }
+
+export interface Question {
+    id: number;
+    title: string;
+    A: string;
+    B: string;
+    C: string;
+    D: string;
+    result: "A" | "B" | "C" | "D";}
+export interface Quiz {
+    title: string;
+    questions: Question[];
+}
