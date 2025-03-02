@@ -3,9 +3,9 @@ import { RightBarChapter } from "./RightBarChapter"
 
 export const BodyChapter = () => {
     return (
-        <div className="flex h-full gap-2">
+        <div className="md:flex h-full gap-2">
             {/* left bar */}
-            <div className="flex-[2]">
+            <div className="flex-[2] md:mb-0 mb-20">
                 <LeftBarChapter/>
             </div>
             {/* right bar */}

@@ -8,7 +8,7 @@ interface mustByCourseType {
     title?: string, subTitle?: string, linkTo?: string
 }
 export const MustBeByCourse = ({
-    title = 'Bạn phải đăng nhập để truy cập vào khóa học này', subTitle = 'Đăng ký ngay', linkTo = '#'
+    title = 'Bạn không có quyền truy cập vào khóa học này', subTitle = 'Đăng ký ngay', linkTo = '#'
 }: mustByCourseType) => {
     return (
         <div className="w-full h-full bg-transparent flex flex-col justify-center items-center">

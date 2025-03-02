@@ -24,10 +24,10 @@ export default function page() {
     <div className='space-y-2'>
       <BreakCrum data={dataBreackCrum}/>
       <div className='flex gap-4'>
-        <div className='w-[70%]'>
+        <div className='md:w-[70%]'>
           <LeftBar/>
         </div>
-        <div className='flex-1'>
+        <div className='flex-1 md:block hidden'>
           <RightBar/>
         </div>
       </div>

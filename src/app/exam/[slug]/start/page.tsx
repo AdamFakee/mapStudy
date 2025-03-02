@@ -87,7 +87,7 @@ function Page() {
                 </div>
             </div>
             {/* list */}
-            <div className='grid md:gid-cols-2 grid-cols-1 gap-6 min-h-[60vh]'>
+            <div className='grid md:grid-cols-2 grid-cols-1 gap-6 min-h-[60vh]'>
                 {
                     listQuizs.map(quiz => {
                         return (

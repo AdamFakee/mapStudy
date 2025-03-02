@@ -40,7 +40,7 @@ function ListCourses({ api }: { api: string }) {
     return (
         <div>
             {/* list courses */}
-            <div className='grid grid-cols-4 gap-x-3 gap-y-6'>
+            <div className='grid md:grid-cols-4 grid-cols-2 gap-x-3 gap-y-6'>
                 {
                     courses?.map(( item ) => {
                         return (

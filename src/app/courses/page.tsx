@@ -13,9 +13,9 @@ function page() {
       {/* course */}
       <div className='minHeight space-y-3'>
         <p className="font-semibold text-xl text-secondary-typo pt-4">KHOÁ HỌC</p>
-        <div className='flex gap-6 h-full'>
+        <div className='lg:flex gap-6 h-full'>
           {/* left bar */}
-          <div className='w-[25%] sticky'>
+          <div className='lg:w-[25%] sticky top-[56px] backdrop-blur-xl z-10'>
             <FilterSideBar/>
           </div>
           {/* right bar */}

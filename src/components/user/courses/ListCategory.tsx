@@ -72,7 +72,7 @@ function ListCategory() {
                 isOpen={isOpen}
                 isShowSeeMore={isShowSeeMore}
             />
-            <div className={`grid ${isOpen ? 'grid-rows-2' : 'grid-rows-1'} grid-cols-5 gap-3`}>
+            <div className={`grid ${isOpen ? 'grid-rows-2' : 'grid-rows-1'} md:grid-cols-5 grid-cols-2 gap-3`}>
                 {
                     categories?.map((item, index )=> {
                         const checkLastItem = index === categories.length - 1;

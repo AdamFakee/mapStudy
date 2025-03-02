@@ -19,11 +19,11 @@ export default function page() {
   return (
     <div>
       <BreakCrum data={dataBreackCrum}/>
-      <div className='flex gap-4'>
-        <div className='w-[70%]'>
+      <div className='lg:flex gap-4'>
+        <div className='lg:w-[70%] w-full'>
           <LeftBar/>
         </div>
-        <div>
+        <div className='lg:flex-1 mt-8 lg:mt-0'>
           <TeacherReview/>
         </div>
       </div>

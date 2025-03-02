@@ -54,7 +54,6 @@ export const LeftBarChapter = () => {
         fetchChapter();
     }, [])
 
-    console.log(isLoading)
     if(isLoading) {
         return (
             <div className="w-full h-full">
