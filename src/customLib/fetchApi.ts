@@ -11,6 +11,7 @@ export interface ApiResponse {
 }
 
 export const fetchApi = async <T>({ url, opts }: { url: string, opts?: fetchOptions }): Promise<T> => {
+    console.log(opts)
     const res =  await fetch(url, {
         method: opts?.method || 'GET',
         headers: {

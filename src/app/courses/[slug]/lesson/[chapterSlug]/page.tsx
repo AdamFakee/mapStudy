@@ -22,7 +22,7 @@ function Page() {
             <HeaderChapter/>
             <BodyChapter/>
           </>
-        ) : <MustBeByCourse title='Bạn cần đăng nhập để tiếp tục' subTitle="Đăng nhập ngay" linkTo="#"/>
+        ) : <MustBeByCourse title='Bạn cần đăng nhập để tiếp tục' subTitle="Đăng nhập ngay" linkTo="/login"/>
 
       }
     </div>

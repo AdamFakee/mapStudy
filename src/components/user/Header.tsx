@@ -30,7 +30,7 @@ const Header = () => {
                     <div className='sm:w-[25%]'>
                         <div className='flex gap-3 justify-end'>
                             <div className='lg:block hidden'>
-                                <TextLink href='#' text='Kích hoạt thẻ' isEnd={false}/>
+                                <TextLink href='/activeCourse' text='Kích hoạt thẻ' isEnd={false}/>
                             </div>
                             <TextLink href='/signup' text='Đăng ký' isEnd={user?.isLogin || false} otherStyles={user?.isLogin ? 'hidden' : ''}/>
                             <TextLink href='/login' text='Đăng nhập' isEnd={user?.isLogin || false} otherStyles={user?.isLogin ? 'hidden' : ''}/>
