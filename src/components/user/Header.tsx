@@ -1,14 +1,21 @@
 'use client'
 import { icon } from '@/constants/icon'
 import Image from 'next/image'
-import React from 'react'
-import Search from './home/header/Search'
+import React, { useEffect, useState } from 'react'
+import Search, { SearchMobile } from './home/header/Search'
 import NavBar from './home/header/Navbar'
 import TextLink, { TextLink_Logout } from './home/header/TextLink'
 import { useAuthContext } from '@/contexts/AuthContext'
 
 const Header = () => {
     const { user } = useAuthContext();
+    const [isMobile, setIsMobile] = useState<boolean>();
+    useEffect(() => {
+        const handleResize = (e) => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        window.addEventListener('resize', handleResize);
+    }, []); 
     return (
         <header className='w-full relative z-30 bg-[#ffffff1A]'>
             <div className='fixed top-0 w-full backdrop-blur-md'>
@@ -20,7 +27,7 @@ const Header = () => {
                             alt='logo'
                             className='w-[38.5px] aspect-square object-contain '
                         />
-                        <Search/>
+                        { isMobile ? <SearchMobile/> : <Search/>}
                     </div>
                     {/* navbar */}
                     <nav className='sm:w-[50%] sm:block hidden'>
