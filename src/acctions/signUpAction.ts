@@ -3,7 +3,7 @@
 import { signupValidate } from "@/validations/user/signupValidate";
 import { domainNextServer } from "@/constants/domain";
 import { fetchOptions } from "@/customLib/fetchApi";
-import { resultFetchSignUp } from "@/app/api/auth/signup/route";
+import { resultFetchSignUp } from "@/app/(client)/api/auth/signup/route";
 
 export type State = {
     errors?: any
