@@ -4,7 +4,7 @@ function DashBoardLayout ({ children }: { children: React.ReactNode }) {
     return (
         <div className='w-full h-full flex bg-background gap-2'>
             {/* left bar */}
-            <div className='w-[5%] fixedHeightAdmin py-2'>
+            <div className='w-[50px] fixedHeightAdmin py-2'>
                     <LeftBarLayOut/>
                 </div>
                 {/* content */}

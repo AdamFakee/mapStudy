@@ -1,73 +1,62 @@
 [
-    {
-      "id": "1",
-      "owner": "Tổ Toán học Mapstudy",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA I - CHUYÊN ĐỀ CƠ BẢN MÔN TOÁN NĂM 2026",
-      "class": "11"
-    },
-    {
-      "id": "2",
-      "owner": "Tổ Toán học Mapstudy",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA M - VẬN DỤNG VÀ VẬN DỤNG CAO MÔN TOÁN",
-      "class": "10"
-    },
-    {
-      "id": "3",
-      "owner": "Tổ Toán học Mapstudy",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA O - THỰC CHIẾN LUYỆN ĐỀ MÔN TOÁN",
-      "class": "11"
-    },
-    {
-      "id": "4",
-      "owner": "Tổ Toán học Mapstudy",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA E - TỔNG ÔN TRỌNG ĐIỂM MÔN TOÁN",
-      "class": "12"
-    },
-    {
-      "id": "5",
-      "owner": "Thầy Vũ Ngọc Anh",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA I - CHUYÊN ĐỀ CƠ BẢN MÔN VẬT LÝ NĂM 2026",
-      "class": "11"
-    },
-    {
-      "id": "6",
-      "owner": "Thầy Vũ Ngọc Anh",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA M - VẬN DỤNG VÀ VẬN DỤNG CAO VẬT LÝ",
-      "class": "12"
-    },
-    {
-      "id": "7",
-      "owner": "Thầy Vũ Ngọc Anh",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA O - THỰC CHIẾN LUYỆN ĐỀ VẬT LÝ",
-      "class": "12"
-    },
-    {
-      "id": "8",
-      "owner": "Thầy Vũ Ngọc Anh",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA E - TỔNG ÔN TRỌNG ĐIỂM MÔN VẬT LÝ",
-      "class": "10"
-    },
-    {
-      "id": "9",
-      "owner": "Tổ Vật lý Mapstudy",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "PHONG TỎA VẬT LÝ LỚP 11 - TẬP 2",
-      "class": "10"
-    },
-    {
-      "id": "10",
-      "owner": "Đội ngũ giáo viên Mapstudy",
-      "thumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
-      "title": "KHÓA LUYỆN ĐỀ ĐÁNH GIÁ NĂNG LỰC ĐHQG - V-ACT",
-      "class": "10"
-    }
-  ]
-  
+  {
+      "teacherName": "Tổ Toán học Mapstudy",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA I - CHUYÊN ĐỀ CƠ BẢN MÔN TOÁN NĂM 2026",
+      "courseId": 1
+  },
+  {
+      "teacherName": "Tổ Toán học Mapstudy",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA M - VẬN DỤNG VÀ VẬN DỤNG CAO MÔN TOÁN",
+      "courseId": 2
+  },
+  {
+      "teacherName": "Tổ Toán học Mapstudy",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA O - THỰC CHIẾN LUYỆN ĐỀ MÔN TOÁN",
+      "courseId": 3
+  },
+  {
+      "teacherName": "Tổ Toán học Mapstudy",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA E - TỔNG ÔN TRỌNG ĐIỂM MÔN TOÁN",
+      "courseId": 4
+  },
+  {
+      "teacherName": "Thầy Vũ Ngọc Anh",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA I - CHUYÊN ĐỀ CƠ BẢN MÔN VẬT LÝ NĂM 2026",
+      "courseId": 5
+  },
+  {
+      "teacherName": "Thầy Vũ Ngọc Anh",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA M - VẬN DỤNG VÀ VẬN DỤNG CAO VẬT LÝ",
+      "courseId": 6
+  },
+  {
+      "teacherName": "Thầy Vũ Ngọc Anh",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA O - THỰC CHIẾN LUYỆN ĐỀ VẬT LÝ",
+      "courseId": 7
+  },
+  {
+      "teacherName": "Thầy Vũ Ngọc Anh",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA E - TỔNG ÔN TRỌNG ĐIỂM MÔN VẬT LÝ",
+      "courseId": 8
+  },
+  {
+      "teacherName": "Tổ Vật lý Mapstudy",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "PHONG TỎA VẬT LÝ LỚP 11 - TẬP 2",
+      "courseId": 9
+  },
+  {
+      "teacherName": "Đội ngũ giáo viên Mapstudy",
+      "courseThumbnail": "https://mapstudy.sgp1.digitaloceanspaces.com/course/mogb10z00fg2/khoa-i---luyen-thi-thpt-mon-vat-ly-nam-2025-1709626124012.jpg",
+      "courseName": "KHÓA LUYỆN ĐỀ ĐÁNH GIÁ NĂNG LỰC ĐHQG - V-ACT",
+      "courseId": 10
+  }
+]
