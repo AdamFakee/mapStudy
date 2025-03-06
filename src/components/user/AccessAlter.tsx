@@ -1,6 +1,5 @@
 'use client'
 import { img } from "@/constants/img"
-import { useAuthContext } from "@/contexts/AuthContext"
 import Image from "next/image"
 import Link from "next/link"
 

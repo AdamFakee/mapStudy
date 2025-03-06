@@ -7,13 +7,13 @@ import { useSearchParams } from 'next/navigation';
 import React from 'react'
 
 function Page() {
+  
+  const searchParams = useSearchParams();
+  const q = searchParams.get('q');
   // check window đã load xong chưa 
   if (typeof window === "undefined") {
     return <Loading/>
   }
-  const searchParams = useSearchParams();
-  const q = searchParams.get('q');
-
   // lấy data từ local storage 
   const dataLocal = window.localStorage.getItem(`examResult_${q}`);
   const resultDataLocal = window.localStorage.getItem(`result_${q}`);
