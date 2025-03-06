@@ -23,7 +23,7 @@ export default function RootLayout({
           {/* search for mobile */}
           <div 
             data-header-search-popup-mobile='pop-up' 
-            className='hidden h-[100vh] backdrop-blur-sm bg-red-300 w-[100%] fixed z-50 top-0'
+            className='hidden h-[100vh] backdrop-blur-sm bg-slate-200 w-[100%] fixed z-50 top-0'
           >
             <HeaderSearchPopupMobile/>
           </div>
