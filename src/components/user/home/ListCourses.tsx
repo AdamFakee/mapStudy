@@ -62,7 +62,7 @@ function ListCourses({ isNew, isHot, title }: { isNew: boolean, isHot: boolean, 
         <div className='space-y-3'>
             <TitleComponent title={title} swiperRef={swiperRef}/>
             <Swiper
-                loop={true}
+                // loop={true}
                 breakpoints={{
                     320: { slidesPerView: 2, spaceBetween: 10 }, 
                     480: { slidesPerView: 3, spaceBetween: 10 },
