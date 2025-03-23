@@ -22,7 +22,7 @@ export const LeftBarChapter = () => {
     const chapterSlug = params.chapterSlug;
     const courseSlug = params.slug;
     useEffect(() => {
-        const url = `${domain}/chapter/${chapterSlug}`;
+        const url = `${domain}/lesson/${chapterSlug}`;
         const fetchChapter = async () => {
             const accessToken = await handleGetToken('accessToken');
             if(!user || !user.email || !courseSlug || !chapterSlug || !accessToken) {
