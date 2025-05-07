@@ -1,28 +1,29 @@
 'use client'
-import ListCourse from '@/components/admin/course/ListCourse'
-import { useRouter } from 'next/navigation'
+import ListChapter from '@/components/admin/Chapter/ListChapter';
+import { useParams, useRouter } from 'next/navigation'
 import React from 'react'
 
 function Page() {
     const navigation = useRouter();
-    const handleNavigation = () => navigation.push('/admin/courses/create');
+    const params = useParams<{courseId: string}>();
+    const handleNavigation = (courseId : number) => navigation.push('/admin/chapter/create/' + courseId);
     return (
         <div className='h-full space-y-7 flex flex-col'>
             {/* top */}
             <div className='flex justify-between items-center'>
                 <h3>
-                Danh sách khóa học của bạn
+                Danh sách các chương trong khóa học của bạn
                 </h3>
                 <span 
-                    onClick={handleNavigation}
+                    onClick={() => handleNavigation( parseInt(params.courseId))}
                     className='border-[1px] border-green-300 px-3 py-1 rounded-lg'
                 >
-                    create course
+                    create chapter
                 </span>
             </div>
             {/* course list */}
             <div className='flex-1'>
-                <ListCourse/>
+                <ListChapter/>
             </div>
         </div>
     )

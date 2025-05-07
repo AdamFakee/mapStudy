@@ -8,9 +8,49 @@ export interface Course {
     courseId: number
 }
 
+export interface CourseAdmin {
+    id: number;
+    name: string;
+    thumbnail: string;
+    teacher_id?: number;
+    teacherName?: string;
+    teacherThumbnail?: string;
+    category_id: number;
+    class_id: number;
+    description: string;
+    isHot: boolean;
+    isNew: boolean;
+    price: string;
+    status: string;
+    subject_id: number;
+}
+
+
+export interface CourseAdminUpdate {
+    name: string;
+    category_id: number;
+    class_id: number;
+    description: string;
+    price: string;
+    subject_id: number;
+}
+
+
 export interface Category {
     id: number,
     name: string
+}
+
+export interface Class {
+    id: number,
+    name: string
+}
+
+export interface LessonUpdate {
+    chapter_id: number,
+    title: string,
+    video_link: string,
+    position: number
 }
 
 export interface New {
@@ -35,6 +75,18 @@ export interface Chapter {
     title: string
 }
 
+export interface ChapterUpdate {
+    course_id: number,
+    title: string,
+    description: string,
+    position: number,
+}
+
+export interface SubjectAdmin {
+    id: number,
+    name: string;
+}
+
 export interface Subject {
     id: number,
     title: string
@@ -57,6 +109,14 @@ export interface AuthContextData {
     handleLogin: ({ email, tokens }: { email: string, tokens: Tokens}) => Promise<void>;
     handleLogout: () => Promise<void>;
     handleGetToken: (key: string) => Promise<string>;
+}
+
+export interface AuthAdminContextData {
+    user: User | null,
+    setUser: (user: User) => void,
+    isLoading: boolean,
+    handleLogin: ({ email, tokens }: { email: string, tokens: Tokens}) => void;
+    handleLogout: () => Promise<void>;
 }
 
 export interface Question {
