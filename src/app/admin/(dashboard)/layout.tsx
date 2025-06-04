@@ -3,9 +3,7 @@
 import AppHeader from "@/components/admin/layout/AppHeader";
 import AppSidebar from "@/components/admin/layout/AppSidebar";
 import Backdrop from "@/components/admin/layout/Backdrop";
-import { useAuthAdminContext } from "@/contexts/AuthAdminContext";
 import { useSidebar } from "@/contexts/SidebarContext";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 export default function AdminLayout({
@@ -13,7 +11,6 @@ export default function AdminLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const navigation = useRouter();
   const { isExpanded, isHovered, isMobileOpen } = useSidebar();
 
   // Dynamic class for main content margin based on sidebar state
@@ -23,7 +20,6 @@ export default function AdminLayout({
     ? "lg:ml-[290px]"
     : "lg:ml-[90px]";
 
-  const { user } = useAuthAdminContext();
 
   // if(!user?.isLogin) {
   //   return navigation.replace('/admin/auth/login');

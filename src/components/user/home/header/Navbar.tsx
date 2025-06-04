@@ -4,6 +4,8 @@ import { RiHome9Line } from "react-icons/ri";
 import { SiCoursera } from "react-icons/si";
 import { PiExamLight } from "react-icons/pi";
 import { IoNewspaperOutline } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
+import { useAuthContext } from "@/contexts/AuthContext";
 
 // Định nghĩa kiểu dữ liệu cho menu items
 export interface NavItem {
@@ -21,6 +23,8 @@ export const defaultNavItems: NavItem[] = [
 ];
 
 const NavBar = ({ items = defaultNavItems }: { items?: NavItem[] }) => {
+  const { user } = useAuthContext();
+  
   return (
     <div className="flex mx-auto items-center justify-center gap-2 h-full w-full">
       {items.map((item, index) => (
@@ -28,19 +32,40 @@ const NavBar = ({ items = defaultNavItems }: { items?: NavItem[] }) => {
           <div className="h-full px-6 flex items-center">{item.icon}</div>
         </Link>
       ))}
+
+      {
+        user?.isLogin && (
+          <Link href={'/profile'} className="h-full w-max">
+            <div className="h-full px-6 flex items-center">
+              <CgProfile className="w-6 h-6 text-gray-500" />
+            </div>
+          </Link>
+        )
+      }
     </div>
   );
 };
 
 export const NavBarMobile = ({ items = defaultNavItems }: { items?: NavItem[] }) => {
+  const { user } = useAuthContext();
   return (
     <div className="flex mx-auto items-center justify-between gap-6 h-full w-full py-[4px] px-[28px]">
       {items.map((item, index) => (
         <Link key={index} href={item.href} className="h-full w-max gap-0.5 flex-col">
           <div className="h-full px-6 flex items-center">{item.icon}</div>
-          <p className="text-[#4b5563] text-sm">{item.title}</p>
+          <p className="text-[#4b5563] text-sm text-center">{item.title}</p>
         </Link>
       ))}
+      {
+        user?.isLogin && (
+          <Link href={'/profile'} className="h-full w-max">
+            <div className="h-full px-6 flex items-center">
+              <CgProfile className="w-6 h-6 text-gray-500" />
+            </div>
+            <p className="text-[#4b5563] text-sm text-center">Profile</p>
+          </Link>
+        )
+      }
     </div>
   );
 }

@@ -18,7 +18,7 @@ function Page() {
     const submit = async (data: ChapterUpdate) => {
         const url = domainAdmin + `/chapter/create`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         data = {...data, course_id: parseInt(params.courseId) }

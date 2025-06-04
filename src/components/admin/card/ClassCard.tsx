@@ -17,7 +17,7 @@ export const ClassCard = ({ item }: { item: Class }) => {
     const handleDelete = async (classId: Class['id']) => {
         const url = domainAdmin + `/class/delete/${classId}`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {

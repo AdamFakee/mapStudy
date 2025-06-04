@@ -34,7 +34,7 @@ const AuthAdminContext = ({ children }: { children: React.ReactNode }) => {
             const parserToken = parserJwtToken(accessToken);
 
             setUser({
-                email: parserToken?.email,
+                email: parserToken?.email || '',
                 isLogin: true
             })
         }

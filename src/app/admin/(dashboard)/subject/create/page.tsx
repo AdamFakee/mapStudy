@@ -1,13 +1,12 @@
 'use client'
 import { InputAdmin } from '@/components/admin/Input';
-import { Loading } from '@/components/user/AccessAlter';
 import { domainAdmin } from '@/constants/domain';
 import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { ApiResponse, fetchOptions, fetchApi } from '@/customLib/fetchApi';
 import { SubjectAdmin } from '@/types/definition';
 import { getCookie } from 'cookies-next';
 import { useRouter } from 'next/navigation'
-import React, { useState } from 'react'
+import React from 'react'
 import { useForm } from 'react-hook-form';
 
 
@@ -18,7 +17,7 @@ function Page() {
     const submit = async (data: SubjectAdmin) => {
         const url = domainAdmin + `/subject/create`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {

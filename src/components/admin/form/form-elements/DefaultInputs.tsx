@@ -5,7 +5,7 @@ import Label from '../Label';
 import Input from '../input/InputField';
 import Select from '../Select';
 import { ChevronDownIcon, EyeIcon, EyeCloseIcon, TimeIcon } from '@/icons';
-import DatePicker from '../date-picker';
+// import DatePicker from '../date-picker';
 
 
 export default function DefaultInputs() {
@@ -64,7 +64,7 @@ export default function DefaultInputs() {
         </div>
 
         <div>
-          <DatePicker
+          {/* <DatePicker
             id="date-picker"
             label="Date Picker Input"
             placeholder="Select a date"
@@ -72,7 +72,7 @@ export default function DefaultInputs() {
               // Handle your logic
               console.log({ dates, currentDateString });
             }}
-          />
+          /> */}
         </div>
 
         <div>

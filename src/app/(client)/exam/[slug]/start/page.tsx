@@ -7,16 +7,19 @@ import { Question } from '@/types/definition';
 import { examQuestion, ExamQuestionType } from '@/reducer/user/examQuestion';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+
+export type keyExam = keyof typeof dataExam
+
 function Page() {
     const [currPage, setCurrPage] = useState<number>(1);
     const [resultExam, disPatchResultExam] = useReducer(examQuestion, {});
     const router = useRouter();
     const params = useParams();
     const {slug} = params; // id của đề 
-    const keyInObj = 'quizSet' + slug;
+    const keyInObj: keyExam = 'quizSet' + slug as keyExam;
     const limit = 4;
     const skip = (currPage - 1) * limit;
-    const listQuizs: Question[] = dataExam[keyInObj].slice(skip, skip+4) || [];
+    const listQuizs: Question[] = dataExam[keyInObj].slice(skip, skip+4) as Question[];
 
     if(listQuizs.length === 0) {
         return (

@@ -2,8 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
-import SidebarWidget from "./SidebarWidget";
+import { useRouter } from "next/navigation";
 import { useSidebar } from "@/contexts/SidebarContext";
 
 type NavItem = {

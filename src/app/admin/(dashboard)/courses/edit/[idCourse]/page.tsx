@@ -31,7 +31,7 @@ function Page() {
     const submit = async (data: CourseAdminUpdate) => {
         const url = domainAdmin + `/course/edit/${params.idCourse}`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {
@@ -46,6 +46,7 @@ function Page() {
                 return navigation.replace('/admin/courses');
             }
         } catch (error) {
+            console.log(error)
             alert('somthing went wrong');
         } finally {
             setIsLoading(false)
@@ -55,7 +56,7 @@ function Page() {
         const fetch = async () => {
             const url = domainAdmin + `/course/${params.idCourse}`;
             const header: HeadersInit = {
-                "authorization": getCookie('accessToken') || '',
+                "authorization": getCookie('accessToken')?.toString() || '',
                 "x-client-email": user?.email || ''
             };
             const opts: fetchOptions = {
@@ -72,7 +73,7 @@ function Page() {
             }
         }
         fetch();
-    }, []);
+    }, [params.idCourse, user?.email]);
 
     if(isLoading) {
         return <div>

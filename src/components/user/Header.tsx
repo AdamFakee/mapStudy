@@ -11,7 +11,7 @@ const Header = () => {
     const { user } = useAuthContext();
     const [isMobile, setIsMobile] = useState<boolean>();
     useEffect(() => {
-        const handleResize = (e) => {
+        const handleResize = () => {
             setIsMobile(window.innerWidth < 768);
         };
         window.addEventListener('resize', handleResize);

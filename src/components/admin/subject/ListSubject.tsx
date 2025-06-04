@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react'
 import { domainAdmin } from '@/constants/domain';
 import { ApiResponse, fetchApi } from '@/customLib/fetchApi';
 import { SubjectAdmin } from '@/types/definition';
-import { ClassCard } from '../card/ClassCard';
 import { SubjectCard } from '../card/SubjectCard';
 
 interface resultFetch extends ApiResponse {

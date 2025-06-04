@@ -1,7 +1,6 @@
 -- "EduMarket" là trang web clone từ trang 'https://mapstudy.edu.vn/'.
 
-video demo: https://drive.google.com/file/d/1zolZ_CxOERUAbUQF5Kc-3xHYcUyVqiCu/view?usp=sharing
-( do video được quay ở môi trường dev nên bị render 2 lần làm gián đoạn một ít trải nghiệm )
+video demo: https://drive.google.com/file/d/1C0evnzgm0qoh5McBB5oB0sOwVZg5NjMg/view?usp=sharing
 
 Source FE: https://github.com/AdamFakee/mapStudy
 Source BE: https://github.com/AdamFakee/mapStudy-backend

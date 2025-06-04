@@ -17,7 +17,7 @@ export const SubjectCard = ({ item }: { item: SubjectAdmin }) => {
     const handleDelete = async (subjectId: SubjectAdmin['id']) => {
         const url = domainAdmin + `/subject/delete/${subjectId}`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {

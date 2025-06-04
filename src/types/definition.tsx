@@ -116,7 +116,7 @@ export interface AuthAdminContextData {
     setUser: (user: User) => void,
     isLoading: boolean,
     handleLogin: ({ email, tokens }: { email: string, tokens: Tokens}) => void;
-    handleLogout: () => Promise<void>;
+    // handleLogout: () => Promise<void>;
 }
 
 export interface Question {

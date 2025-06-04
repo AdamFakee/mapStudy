@@ -28,7 +28,7 @@ function Page() {
     const submit = async (data: LessonUpdate) => {
         const url = domainAdmin + `/lesson/edit/${params.lessonId}`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {
@@ -53,7 +53,7 @@ function Page() {
             const url = domainAdmin + `/lesson/${params.lessonId}`;
             console.log(url)
             const header: HeadersInit = {
-                "authorization": getCookie('accessToken') || '',
+                "authorization": getCookie('accessToken')?.toString() || '',
                 "x-client-email": user?.email || ''
             };
             const opts: fetchOptions = {
@@ -70,7 +70,7 @@ function Page() {
             }
         }
         fetch();
-    }, []);
+    }, [params.lessonId, user?.email]);
 
     if(isLoading) {
         return <div>

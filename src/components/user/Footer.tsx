@@ -1,3 +1,4 @@
+'use client'
 import { icon } from "@/constants/icon";
 import Image from "next/image";
 import { NavBarMobile } from "./home/header/Navbar";

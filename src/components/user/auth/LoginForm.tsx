@@ -21,6 +21,7 @@ function LoginForm() {
             }
             fetchCookie();
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [state])
 
     return (

@@ -2,7 +2,7 @@
 import { Question } from '@/types/definition';
 import React from 'react'
 
-const Ques = ({ value, keys, id, fnCheckAnswer, fnAddAnswer }: {value: string, keys: string, id: number, fnAddAnswer: (id: number, answer: string) => void,
+const Ques = ({ value, keys, id, fnCheckAnswer, fnAddAnswer }: {value: string|number, keys: string, id: number, fnAddAnswer: (id: number, answer: string) => void,
     fnCheckAnswer: (id: number) => string}) => {
     return (
         <>

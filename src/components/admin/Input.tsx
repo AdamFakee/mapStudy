@@ -1,5 +1,4 @@
 'use client'
-import { selectStyles } from "@/customLib/reactSelect";
 import { useState } from "react";
 import { PiSmileyXEyesLight } from "react-icons/pi";
 import { LiaMehRollingEyesSolid } from "react-icons/lia";
@@ -17,7 +16,7 @@ interface InputType<T extends FieldValues> {
     defaultValue?: string | number
 }
 
-export default function Frame({ children, warn, label } : { children: React.ReactNode, warn: InputType['warn']
+export default function Frame<T extends FieldValues,>({ children, warn, label } : { children: React.ReactNode, warn: InputType<T>['warn']
  ,label: string } ) {
     return (
         <div className="w-full text-cp">

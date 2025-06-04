@@ -41,7 +41,7 @@ function LoginFormAdmin() {
             if(res.status === 200) {
                 navigation.replace('/admin')
             }
-        } catch (e) {
+        } catch {
             alert('login fail')
         }
     }

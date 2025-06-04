@@ -1,6 +1,5 @@
 'use client'
 import ListClass from '@/components/admin/class/ListClass';
-import ListSubject from '@/components/admin/subject/ListSubject';
 import { useRouter } from 'next/navigation';
 import React from 'react'
 

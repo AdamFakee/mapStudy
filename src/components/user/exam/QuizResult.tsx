@@ -57,7 +57,7 @@ function QuestionResult({ pos, question, answer }: QuizQuestionType) {
                     const isAnswer = item === answer; // Kiểm tra đáp án người dùng chọn
                     return (
                         <div key={index} className='inline-flex items-center gap-2'>
-                            <Ques keys={item} value={question[item]} isRight={isRight} isAnswer={isAnswer}/>            
+                            <Ques keys={item} value={question[item].toString()} isRight={isRight} isAnswer={isAnswer}/>            
                         </div>
                     )
                 })}

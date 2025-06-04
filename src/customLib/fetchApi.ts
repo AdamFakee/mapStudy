@@ -2,7 +2,7 @@
 export interface fetchOptions {
     method?: "GET" | "POST" | "DELETE" | "PATCH";
     header?: HeadersInit;
-    body?: any;
+    body?: unknown;
 }
 
 export interface ApiResponse {

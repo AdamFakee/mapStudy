@@ -1,5 +1,4 @@
-import Image from 'next/image'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
 
 interface props {
     icon: React.ReactNode | string,

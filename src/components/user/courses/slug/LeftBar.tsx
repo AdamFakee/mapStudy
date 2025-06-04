@@ -47,7 +47,7 @@ function LeftBar() {
 
     return (
         <div className='space-y-6'>
-            <Banner thumbnail={results?.detail_course.courseThumbnail} title={results?.detail_course.courseName}/>
+            <Banner thumbnail={results?.detail_course.courseThumbnail || ''} title={results?.detail_course.courseName || ''}/>
             <div className='space-y-3 bg-[#f3f4f5]'>
                 {
                     results && results.detail_chapter.map(( chapter, index ) => {

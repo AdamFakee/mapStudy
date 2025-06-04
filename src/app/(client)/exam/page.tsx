@@ -10,7 +10,7 @@ function Page() {
   const totalResults = 15;
   const limit = 10;
   const searchParams = useSearchParams();
-  const page = searchParams.get('page') || 1;
+  const page = searchParams.get('page') || '1';
   const skip = (parseInt(page) - 1) * limit;
   const totalExam = Object.keys(data);
   const results = Array.from({ length: skip === 0 ? limit : totalExam.length - skip }, (_, index) => index + skip + 1); // Tạo mảng [1 + skip, 2 + skip, ...]

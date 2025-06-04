@@ -1,3 +1,6 @@
+export const dynamic = 'force-dynamic'
+
+
 import '@/styles/global.css';
 import Header from '@/components/user/Header';
 import Footer from '@/components/user/Footer';

@@ -2,8 +2,7 @@
 import { domain } from '@/constants/domain';
 import { ApiResponse, fetchApi } from '@/customLib/fetchApi';
 import { Course } from '@/types/definition';
-import Link from 'next/link';
-import React, { ChangeEvent, KeyboardEvent, useEffect, useRef, useState } from 'react'
+import React, { ChangeEvent, KeyboardEvent, useRef, useState } from 'react'
 import { AiOutlineClose } from "react-icons/ai";
 import { CourseCard } from './Card';
 
@@ -15,16 +14,16 @@ interface resultFetch extends ApiResponse {
 }
 function HeaderSearchPopup() {
     // ref tới thẻ cha 
-    const popupRef = useRef(null);
+    const popupRef = useRef<HTMLDivElement>(null);
     const [searchValue, setSearchValue] = useState<string>();
     const [searchResult, setSearchResult] = useState<Course[]>();
 
     // đóng pop-up khi click bên phần nền back-drop 
     const handleParentClickToExit = (e: React.MouseEvent) => {
-        const clickedElement = e.target; 
-        const popupElement = popupRef.current;
+        const clickedElement = e.target as HTMLElement; 
+        const popupElement = popupRef.current as HTMLElement;
         // check clickedElement có nằm trong popupElement hay không
-        if (popupElement && !popupElement.contains(clickedElement)) {
+        if (popupElement && clickedElement && !popupElement.contains(clickedElement)) {
             const headerSearchPopUp = document.querySelector('div[data-header-search-popup="pop-up"]'); // thẻ cha của thẻ pop-up 
             if(headerSearchPopUp) {
                 headerSearchPopUp.classList.add('hidden');
@@ -101,13 +100,13 @@ export default HeaderSearchPopup
 
 export function HeaderSearchPopupMobile() {
     // ref tới thẻ cha 
-    const popupRef = useRef(null);
+    const popupRef = useRef<HTMLDivElement>(null);
     const [searchValue, setSearchValue] = useState<string>();
     const [searchResult, setSearchResult] = useState<Course[]>();
     // đóng pop-up khi click bên phần nền back-drop 
     const handleParentClickToExit = (e: React.MouseEvent) => {
-        const clickedElement = e.target; 
-        const popupElement = popupRef.current;
+        const clickedElement = e.target as HTMLElement; 
+        const popupElement = popupRef.current as HTMLElement;
         // check clickedElement có nằm trong popupElement hay không
         if (popupElement && !popupElement.contains(clickedElement)) {
             const headerSearchPopUp = document.querySelector('div[data-header-search-popup-mobile="pop-up"]'); // thẻ cha của thẻ pop-up 

@@ -34,7 +34,7 @@ function Page() {
     const submit = async (data: CourseAdminCeate) => {
         const url = domainAdmin + `/course/create`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {

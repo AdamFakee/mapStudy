@@ -7,7 +7,7 @@ const Context = createContext<AuthContextData>({} as AuthContextData);
 
 export const useAuthContext = () => useContext(Context);
 const AuthContext = ({ children }: { children: React.ReactNode }) => {
-    const [user, setUser] = useState<User>();
+    const [user, setUser] = useState<User | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true);
     useEffect(() => {
         const handleFirstLogin = async () => {
@@ -40,6 +40,7 @@ const AuthContext = ({ children }: { children: React.ReactNode }) => {
                 const parsedRefreshToken = parserJwtToken(refreshToken);
                 const matchObjs: boolean = parsedAccessToken?.email === parsedRefreshToken?.email; // so sánh data trong token 
                 setUser(prevUser => {
+                    console.log(prevUser)
                     if(matchObjs) {
                         return {
                             email: parsedAccessToken?.email || "",

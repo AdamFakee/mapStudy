@@ -1,6 +1,6 @@
 import { StylesConfig  } from 'react-select'
 
-export const selectStyles: StylesConfig<any> = {
+export const selectStyles: StylesConfig<unknown> = {
     container: (styles) => ({ ...styles, borderRadius: 8, width: '100%', }),
     menu: (styles ) => ({ ...styles, borderRadius: 8, backgroundColor: '#fff', color: 'blue', padding: 0}),
     menuList: (styles ) => ({ ...styles, borderRadius: 8, backgroundColor: '#fff', margin: 0, padding: 0 }),

@@ -1,14 +1,10 @@
 'use client'
 // Import các icon bạn cần
-import { RiHome9Line } from "react-icons/ri";
-import { SiCoursera } from "react-icons/si";
 import { IoIosLogIn } from "react-icons/io";
-import { PiExamLight } from "react-icons/pi";
-import { IoNewspaperOutline } from "react-icons/io5";
 import NavBar, { NavBarMobile } from "./leftBar/NavBar";
 import { icon } from "@/constants/icon";
 import Image from "next/image";
-import { CustomIconMenu, CustomIconMobile } from "./leftBar/CustomIcon";
+import { CustomIconMenu } from "./leftBar/CustomIcon";
 import { CiMenuFries } from "react-icons/ci";
 import { useState } from "react";
 import { useAuthContext } from "@/contexts/AuthContext";
@@ -55,14 +51,6 @@ const contacts: NavItem[] = [
 ];
   
 
-const Menu = () => {
-  return (
-    <div className={`relative z-99 bg-red-500 -mt-[56px] mr-[-28px] ml-[28px]`} style={{width: window.innerWidth, height: window.innerHeight}}>
-      
-    </div>
-
-  )
-}
 
 const LeftBar = () => {
   const [isOpen, setIsOpen] = useState(false);

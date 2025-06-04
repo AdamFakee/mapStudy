@@ -34,6 +34,7 @@ const SubjectComponent = ({ subjects, filter, dispatch }: subjectProps) => {
                 subjects.map(item => {
                     const isChoosen = filter.includes(item.id);
                     return (
+                        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
                         <div key={item.id} onClick={() => {isChoosen ? handleDeleteItem(item.id) : handleAddItem(item.id)}}>
                             <div  style={{ backgroundColor: isChoosen ? '#155e94' : '#e9edf1', color: isChoosen ? '#fff' : '#222'}} className='px-4 py-1.5 rounded-lg cursor-pointer hover:bg-[#e1e3e7]'>
                                 {item.title}

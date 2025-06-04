@@ -1,17 +1,18 @@
 'use client'
 
-import React, { useEffect, useRef, useState } from 'react'
+import React, { RefObject, useEffect, useRef, useState } from 'react'
 import { FaLongArrowAltRight } from "react-icons/fa";
 import { FaLongArrowAltLeft  } from "react-icons/fa";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {SwiperSlide, Swiper as SwiperElement } from "swiper/react";
 import "swiper/css";
 import { Course } from '@/types/definition';
 import { CourseCard } from '../Card';
 import { domain } from '@/constants/domain';
 import { ApiResponse, fetchApi } from '@/customLib/fetchApi';
+import Swiper from 'swiper';
 
 
-const TitleComponent = ({ title, swiperRef }: { title: string, swiperRef: any }) => {
+const TitleComponent = ({ title, swiperRef }: { title: string, swiperRef: RefObject<Swiper | null> }) => {
     const handlePrevSlide = () => swiperRef.current?.slidePrev()
     const handleNextSlide = () => swiperRef.current?.slideNext()
 
@@ -38,7 +39,7 @@ interface resultFetch extends ApiResponse {
 
 function ListCourses({ isNew, isHot, title }: { isNew: boolean, isHot: boolean, title: string }) {
     // ref to swiper
-    const swiperRef = useRef<any>(null)
+    const swiperRef = useRef<Swiper>(null)
 
     // call api
     const [ courses, setCourses ] = useState<Course[]>(); 
@@ -61,7 +62,7 @@ function ListCourses({ isNew, isHot, title }: { isNew: boolean, isHot: boolean, 
     return (
         <div className='space-y-3'>
             <TitleComponent title={title} swiperRef={swiperRef}/>
-            <Swiper
+            <SwiperElement
                 // loop={true}
                 breakpoints={{
                     320: { slidesPerView: 2, spaceBetween: 10 }, 
@@ -77,7 +78,7 @@ function ListCourses({ isNew, isHot, title }: { isNew: boolean, isHot: boolean, 
                         <CourseCard item={item} />
                     </SwiperSlide>
                 ))}        
-            </Swiper>
+            </SwiperElement>
         </div>
     )
 }

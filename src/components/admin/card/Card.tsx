@@ -18,7 +18,7 @@ export const CourseCard = ({ item }: { item: CourseAdmin }) => {
     const handleDelete = async (courseId: CourseAdmin['category_id']) => {
         const url = domainAdmin + `/course/delete/${courseId}`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {
@@ -31,7 +31,7 @@ export const CourseCard = ({ item }: { item: CourseAdmin }) => {
             console.log(res)
             navigation.refresh();
 
-        } catch (error) {
+        } catch {
             alert('somthing went wrong');
         } finally {
             setIsLoading(false)

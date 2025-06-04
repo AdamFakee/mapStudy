@@ -52,6 +52,7 @@ export const LeftBarChapter = () => {
             }
         }
         fetchChapter();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     if(isLoading) {

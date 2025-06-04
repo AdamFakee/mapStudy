@@ -1,6 +1,6 @@
 'use server'
 import { domainNextServer } from "@/constants/domain";
-import { ApiResponse, fetchOptions } from "@/customLib/fetchApi";
+import { ApiResponse } from "@/customLib/fetchApi";
 import { Tokens } from "@/types/definition";
 
 interface resultFetch extends ApiResponse {
@@ -15,7 +15,7 @@ interface resultFetch extends ApiResponse {
 }
 
 export const loginAction = async (preState: resultFetch, formData: FormData) => {
-    const opts: fetchOptions = {
+    const opts = {
         method: 'POST',
         body: formData
     }

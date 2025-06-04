@@ -4,7 +4,7 @@ import { Loading } from '@/components/user/AccessAlter';
 import { domainAdmin } from '@/constants/domain';
 import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { ApiResponse, fetchOptions, fetchApi } from '@/customLib/fetchApi';
-import { ChapterUpdate, CourseAdminUpdate, SubjectAdmin } from '@/types/definition';
+import { ChapterUpdate } from '@/types/definition';
 import { getCookie } from 'cookies-next';
 import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -28,7 +28,7 @@ function Page() {
     const submit = async (data: ChapterUpdate) => {
         const url = domainAdmin + `/chapter/edit/${params.chapterId}`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {
@@ -53,7 +53,7 @@ function Page() {
             const url = domainAdmin + `/chapter/${params.chapterId}`;
             console.log(url)
             const header: HeadersInit = {
-                "authorization": getCookie('accessToken') || '',
+                "authorization": getCookie('accessToken')?.toString() || '',
                 "x-client-email": user?.email || ''
             };
             const opts: fetchOptions = {
@@ -70,6 +70,7 @@ function Page() {
             }
         }
         fetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if(isLoading) {

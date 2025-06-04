@@ -1,10 +1,10 @@
 'use client'
-import { InputAdmin, InputSelectAdmin, OptionsAdmin } from '@/components/admin/Input';
+import { InputAdmin } from '@/components/admin/Input';
 import { Loading } from '@/components/user/AccessAlter';
 import { domainAdmin } from '@/constants/domain';
 import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { ApiResponse, fetchOptions, fetchApi } from '@/customLib/fetchApi';
-import { Class, CourseAdmin, CourseAdminUpdate, SubjectAdmin } from '@/types/definition';
+import { Class } from '@/types/definition';
 import { getCookie } from 'cookies-next';
 import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
@@ -28,7 +28,7 @@ function Page() {
     const submit = async (data: Class) => {
         const url = domainAdmin + `/class/edit/${params.subjectId}`;
         const header: HeadersInit = {
-            "authorization": getCookie('accessToken') || '',
+            "authorization": getCookie('accessToken')?.toString() || '',
             "x-client-email": user?.email || ''
         }
         const opts: fetchOptions = {
@@ -52,7 +52,7 @@ function Page() {
         const fetch = async () => {
             const url = domainAdmin + `/class/${params.subjectId}`;
             const header: HeadersInit = {
-                "authorization": getCookie('accessToken') || '',
+                "authorization": getCookie('accessToken')?.toString() || '',
                 "x-client-email": user?.email || ''
             };
             const opts: fetchOptions = {
@@ -69,6 +69,7 @@ function Page() {
             }
         }
         fetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     if(isLoading) {

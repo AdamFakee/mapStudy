@@ -2,11 +2,10 @@
 
 import { signupValidate } from "@/validations/user/signupValidate";
 import { domainNextServer } from "@/constants/domain";
-import { fetchOptions } from "@/customLib/fetchApi";
 import { resultFetchSignUp } from "@/app/(client)/api/auth/signup/route";
 
 export type State = {
-    errors?: any
+    errors?: unknown
     message?: string;
 };
 
@@ -29,7 +28,7 @@ export const signUpAction = async (preState: State, formData: FormData) => {
             message: 'wrong validation'
         }
     }
-    const opts: fetchOptions = {
+    const opts = {
             method: 'POST',
             body: formData
         }
