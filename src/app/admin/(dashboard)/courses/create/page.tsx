@@ -2,7 +2,6 @@
 import { InputAdmin, InputRatioAdmin, InputSelectAdmin, OptionsAdmin } from '@/components/admin/Input';
 import { Loading } from '@/components/user/AccessAlter';
 import { domainAdmin } from '@/constants/domain';
-import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { ApiResponse, fetchOptions, fetchApi } from '@/customLib/fetchApi';
 import { CourseAdminUpdate } from '@/types/definition';
 import { getCookie } from 'cookies-next';
@@ -29,13 +28,14 @@ function Page() {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [data, setData] = useState<resultFetch['metadata']>({} as resultFetch['metadata']);
     const { register, handleSubmit } = useForm<CourseAdminCeate>()
-    const { user } = useAuthAdminContext();
     const navigation = useRouter();
     const submit = async (data: CourseAdminCeate) => {
         const url = domainAdmin + `/course/create`;
+        const userEmail = await getCookie('userEmail');
+        const decodedEmail = userEmail ? decodeURIComponent(userEmail.toString()) : '';
         const header: HeadersInit = {
             "authorization": getCookie('accessToken')?.toString() || '',
-            "x-client-email": user?.email || ''
+            "x-client-email": decodedEmail
         }
         const opts: fetchOptions = {
             method: 'POST',

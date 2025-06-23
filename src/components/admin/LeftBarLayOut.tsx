@@ -15,7 +15,7 @@ interface navigationType {
 
 const defaultNavigationType: navigationType[] = [
     {
-        title: 'Dashboard',
+        title: 'Dashboacccccccccrd',
         linkTo: '#',
         icon: <LuLayoutDashboard className='w-full h-full opacity-40'/>
     },

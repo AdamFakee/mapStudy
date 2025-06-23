@@ -17,7 +17,6 @@ function Page() {
     const [err, setErr] = useState<string>();
     const router = useRouter();
 
-    if (!user || !user.email || !user.isLogin) return <div>xxx</div>;    
     const fetchKeyAction = async () => {
         if(!key) {
             setErr('Vui lòng nhập mã kích hoạt');
@@ -25,7 +24,7 @@ function Page() {
         }
         const accessToken = await handleGetToken('accessToken');            
         const header:HeadersInit ={
-            'x-client-email': user.email,
+            'x-client-email': user?.email || '',
             'authorization': accessToken,
         }
         const opts: fetchOptions = {

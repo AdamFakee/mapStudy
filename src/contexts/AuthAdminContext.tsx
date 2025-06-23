@@ -1,6 +1,7 @@
 'use client'
 import { AuthAdminContextData, User } from '@/types/definition';
 import { parserJwtToken } from '@/utils/parserJwtToken';
+import { deleteCookie } from 'cookies-next';
 import { getCookie, setCookie } from 'cookies-next/client';
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
@@ -15,6 +16,16 @@ const AuthAdminContext = ({ children }: { children: React.ReactNode }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     
     const handleLogin: AuthAdminContextData['handleLogin'] = ({ email, tokens }) => {
+        deleteCookie('accessToken', {
+            path:'/admin'
+        })
+        deleteCookie('refreshToken', {
+            path:'/admin'
+        })
+        deleteCookie('userEmail', {
+            path:'/admin'
+        })
+
         setUser({
             isLogin: true,
             email: email,
@@ -25,6 +36,9 @@ const AuthAdminContext = ({ children }: { children: React.ReactNode }) => {
         setCookie('refreshToken', tokens.refreshToken, {
             path: '/admin'
         });
+        setCookie('userEmail', email, {
+            path: '/admin'
+        })
     }
 
     useEffect(() => {

@@ -1,6 +1,7 @@
 'use client'
 import { AuthContextData, Tokens, User } from '@/types/definition';
 import { parserJwtToken } from '@/utils/parserJwtToken';
+import { deleteCookie, getCookie, setCookie } from 'cookies-next';
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
 const Context = createContext<AuthContextData>({} as AuthContextData);
@@ -11,30 +12,8 @@ const AuthContext = ({ children }: { children: React.ReactNode }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     useEffect(() => {
         const handleFirstLogin = async () => {
-            let accessToken = "", refreshToken = "";
-            try {
-                const res_at = await fetch("/api/cookies?query=accessToken");
-                const res_rf = await fetch("/api/cookies?query=refreshToken");
-    
-                const [result_at, result_rf] = await Promise.all([
-                    res_at.json(),
-                    res_rf.json(),
-                ]);
-    
-    
-                if (!result_at.data || !result_rf.data) {
-                    console.error("Lỗi: API không trả về dữ liệu hợp lệ");
-                    return;
-                }
-    
-                accessToken = result_at.data.accessToken;
-                refreshToken = result_rf.data.refreshToken;
-    
-            } catch (error) {
-                console.error("Lỗi khi lấy token:", error);
-            } finally {
-                setIsLoading(false);
-            }
+            const accessToken = await getCookie('accessToken');
+            const refreshToken = await getCookie('refreshToken');            
             if (accessToken && refreshToken) {
                 const parsedAccessToken = parserJwtToken(accessToken);
                 const parsedRefreshToken = parserJwtToken(refreshToken);
@@ -56,6 +35,7 @@ const AuthContext = ({ children }: { children: React.ReactNode }) => {
             } else {
                 setUser({ email: "", isLogin: false });
             }
+            setIsLoading(true)
         };
         
         handleFirstLogin();
@@ -76,40 +56,32 @@ const AuthContext = ({ children }: { children: React.ReactNode }) => {
         setUser({
             email: email, isLogin: true
         })
+
+        deleteCookie('accessToken')
+        deleteCookie('refreshToken')
+        deleteCookie('userEmail')
+
+        setUser({
+            isLogin: true,
+            email: email,
+        })
+        setCookie('accessToken', tokens.accessToken);
+        setCookie('refreshToken', tokens.refreshToken);
+        setCookie('userEmail', email)
+                    setIsLoading(true)
+
     }
     const handleLogout = async (): Promise<void> => {
-        // delete token into cookie 
-        try {
-            await fetch('/api/cookies', {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: 'refreshToken' })
-            })
-            await fetch('/api/cookies', {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name: 'accessToken' })
-            })
-        } catch (error) {
-            console.log(error)
-        }
         setUser({
             email: '', isLogin: false
         });
+        deleteCookie('accessToken')
+        deleteCookie('refreshToken')
+        deleteCookie('userEmail')
     }
 
     const handleGetToken = async (key: string): Promise<string> => {
-        let token: string = '';
-        try {
-            const res = await fetch(`/api/cookies?query=${key}`);
-
-            const result = await res.json();
-            token = result.data[key];
-
-        } catch (error) {
-            console.log(error)
-        }
-        return token ? token : '';
+        return await getCookie(key) || '';
     };
     return (
         <Context.Provider value={{ user, isLoading, setUser, handleGetToken, handleLogin, handleLogout }}>

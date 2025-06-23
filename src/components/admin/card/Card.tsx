@@ -79,6 +79,11 @@ export const CourseCard = ({ item }: { item: CourseAdmin }) => {
                 <span className='inline-block px-3 py-1 bg-red-300 hover:bg-red-600 rounded-md text-lg font-semibold cursor-pointer text-white' onClick={() => handleDelete(item.id)}>
                     Delete
                 </span>
+                <Link href={`/admin/enroll?courseId=${item.id}`}>
+                    <span className='inline-block px-3 py-1 bg-primary-light rounded-md text-lg font-semibold text-white'>
+                        user
+                    </span>
+                </Link>
             </div>
         </div>
     )

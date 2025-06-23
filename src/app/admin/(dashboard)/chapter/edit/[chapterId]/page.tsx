@@ -2,7 +2,6 @@
 import { InputAdmin } from '@/components/admin/Input';
 import { Loading } from '@/components/user/AccessAlter';
 import { domainAdmin } from '@/constants/domain';
-import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { ApiResponse, fetchOptions, fetchApi } from '@/customLib/fetchApi';
 import { ChapterUpdate } from '@/types/definition';
 import { getCookie } from 'cookies-next';
@@ -23,13 +22,14 @@ function Page() {
     const params = useParams<{ chapterId: string }>();
     const [chapter, setChapter] = useState<ChapterUpdate>();
     const { register, handleSubmit } = useForm<ChapterUpdate>()
-    const { user } = useAuthAdminContext();
     const navigation = useRouter();
     const submit = async (data: ChapterUpdate) => {
         const url = domainAdmin + `/chapter/edit/${params.chapterId}`;
+        const userEmail = await getCookie('userEmail');
+        const decodedEmail = userEmail ? decodeURIComponent(userEmail.toString()) : '';
         const header: HeadersInit = {
             "authorization": getCookie('accessToken')?.toString() || '',
-            "x-client-email": user?.email || ''
+            "x-client-email": decodedEmail
         }
         const opts: fetchOptions = {
             method: 'PATCH',
@@ -52,10 +52,12 @@ function Page() {
         const fetch = async () => {
             const url = domainAdmin + `/chapter/${params.chapterId}`;
             console.log(url)
+            const userEmail = await getCookie('userEmail');
+            const decodedEmail = userEmail ? decodeURIComponent(userEmail.toString()) : '';
             const header: HeadersInit = {
                 "authorization": getCookie('accessToken')?.toString() || '',
-                "x-client-email": user?.email || ''
-            };
+                "x-client-email": decodedEmail
+            }
             const opts: fetchOptions = {
                 header,
             };

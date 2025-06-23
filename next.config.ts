@@ -12,7 +12,7 @@ const nextConfig: NextConfig = {
     // Tắt type checking trong quá trình build (tùy chọn)
     ignoreBuildErrors: true,
   },
-  
+  output: 'standalone'
 };
 
 export default nextConfig;

@@ -5,20 +5,20 @@ import { Class } from '@/types/definition';
 import { domainAdmin } from '@/constants/domain';
 import { fetchOptions, fetchApi, ApiResponse } from '@/customLib/fetchApi';
 import { getCookie } from 'cookies-next';
-import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { Loading } from '../../user/AccessAlter';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
 export const ClassCard = ({ item }: { item: Class }) => {
-    const { user} = useAuthAdminContext();
     const [isLoading, setIsLoading] = useState<boolean>();
     const navigation = useRouter();
     const handleDelete = async (classId: Class['id']) => {
         const url = domainAdmin + `/class/delete/${classId}`;
+        const userEmail = await getCookie('userEmail');
+        const decodedEmail = userEmail ? decodeURIComponent(userEmail.toString()) : '';
         const header: HeadersInit = {
             "authorization": getCookie('accessToken')?.toString() || '',
-            "x-client-email": user?.email || ''
+            "x-client-email": decodedEmail
         }
         const opts: fetchOptions = {
             method: 'DELETE',

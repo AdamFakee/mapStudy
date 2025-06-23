@@ -11,10 +11,10 @@ type NavItem = {
 };
 
 const NavMenu: NavItem[] = [
-  {
-    name: 'dash-board',
-    path: '/admin'
-  },
+  // {
+  //   name: 'dash-board',
+  //   path: '/admin'
+  // },
   {
     name: 'course',
     path: '/admin/courses'

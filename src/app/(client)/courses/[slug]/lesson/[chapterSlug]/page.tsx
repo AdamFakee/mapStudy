@@ -1,16 +1,11 @@
 'use client'
-import { Loading, MustBeByCourse } from "@/components/user/AccessAlter";
+import { MustBeByCourse } from "@/components/user/AccessAlter";
 import { BodyChapter } from "@/components/user/courses/chapter/BodyChapter"
 import HeaderChapter from "@/components/user/courses/chapter/HeaderChapter"
 import { useAuthContext } from "@/contexts/AuthContext"
 
 function Page() {
-  const { isLoading, user } = useAuthContext();
-  if(isLoading) {
-    return (
-      <Loading/>
-    )
-  }
+  const {  user } = useAuthContext();
 
    
   

@@ -4,7 +4,6 @@ import { CourseCard } from '../card/Card';
 import { domainAdmin } from '@/constants/domain';
 import { ApiResponse, fetchApi, fetchOptions } from '@/customLib/fetchApi';
 import { getCookie } from 'cookies-next/client';
-import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { CourseAdmin } from '@/types/definition';
 
 interface resultFetch extends ApiResponse {
@@ -15,14 +14,15 @@ interface resultFetch extends ApiResponse {
 
 function ListCourse() {
     const [courses, setCourses] = useState<CourseAdmin[]>([]);
-    const { user } = useAuthAdminContext();
     useEffect(() => {
         const fetch = async () => {
             const url = domainAdmin + '/course';
+            const userEmail = getCookie('userEmail');
+            const decodedEmail = userEmail ? decodeURIComponent(userEmail.toString()) : '';
             const header: HeadersInit = {
-                "authorization": getCookie('accessToken') || '',
-                "x-client-email": user?.email || ''
-            };
+                "authorization": getCookie('accessToken')?.toString() || '',
+                "x-client-email": decodedEmail
+            }
             const opts: fetchOptions = {
                 header,
             };

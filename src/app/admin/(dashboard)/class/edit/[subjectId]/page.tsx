@@ -27,9 +27,11 @@ function Page() {
     const navigation = useRouter();
     const submit = async (data: Class) => {
         const url = domainAdmin + `/class/edit/${params.subjectId}`;
+        const userEmail = await getCookie('userEmail');
+        const decodedEmail = userEmail ? decodeURIComponent(userEmail.toString()) : '';
         const header: HeadersInit = {
             "authorization": getCookie('accessToken')?.toString() || '',
-            "x-client-email": user?.email || ''
+            "x-client-email": decodedEmail
         }
         const opts: fetchOptions = {
             method: 'PATCH',

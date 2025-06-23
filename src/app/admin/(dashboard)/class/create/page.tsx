@@ -1,7 +1,6 @@
 'use client'
 import { InputAdmin } from '@/components/admin/Input';
 import { domainAdmin } from '@/constants/domain';
-import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { ApiResponse, fetchOptions, fetchApi } from '@/customLib/fetchApi';
 import { Class } from '@/types/definition';
 import { getCookie } from 'cookies-next';
@@ -12,13 +11,14 @@ import { useForm } from 'react-hook-form';
 
 function Page() {
     const { register, handleSubmit } = useForm<Class>()
-    const { user } = useAuthAdminContext();
     const navigation = useRouter();
     const submit = async (data: Class) => {
         const url = domainAdmin + `/class/create`;
+       const userEmail = await getCookie('userEmail');
+        const decodedEmail = userEmail ? decodeURIComponent(userEmail.toString()) : '';
         const header: HeadersInit = {
             "authorization": getCookie('accessToken')?.toString() || '',
-            "x-client-email": user?.email || ''
+            "x-client-email": decodedEmail
         }
         const opts: fetchOptions = {
             method: 'POST',

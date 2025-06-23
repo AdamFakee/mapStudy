@@ -39,9 +39,10 @@ function LoginFormAdmin() {
             const res = await fetchApi<resultFetch>({url, opts})
             handleLogin({email: res.metadata.data.email, tokens: res.metadata.tokens})
             if(res.status === 200) {
-                navigation.replace('/admin')
+                navigation.replace('/admin/courses')
             }
-        } catch {
+        } catch (e){
+            console.log(e)
             alert('login fail')
         }
     }

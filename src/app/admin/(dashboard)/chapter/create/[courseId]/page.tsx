@@ -1,7 +1,6 @@
 'use client'
 import { InputAdmin } from '@/components/admin/Input';
 import { domainAdmin } from '@/constants/domain';
-import { useAuthAdminContext } from '@/contexts/AuthAdminContext';
 import { ApiResponse, fetchOptions, fetchApi } from '@/customLib/fetchApi';
 import { ChapterUpdate } from '@/types/definition';
 import { getCookie } from 'cookies-next';
@@ -13,13 +12,14 @@ import { useForm } from 'react-hook-form';
 function Page() {
     const params = useParams<{courseId: string}>()
     const { register, handleSubmit } = useForm<ChapterUpdate>()
-    const { user } = useAuthAdminContext();
     const navigation = useRouter();
     const submit = async (data: ChapterUpdate) => {
         const url = domainAdmin + `/chapter/create`;
+        const userEmail = await getCookie('userEmail');
+        const decodedEmail = userEmail ? decodeURIComponent(userEmail.toString()) : '';
         const header: HeadersInit = {
             "authorization": getCookie('accessToken')?.toString() || '',
-            "x-client-email": user?.email || ''
+            "x-client-email": decodedEmail
         }
         data = {...data, course_id: parseInt(params.courseId) }
         const opts: fetchOptions = {

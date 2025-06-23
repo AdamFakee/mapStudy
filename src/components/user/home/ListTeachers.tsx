@@ -37,9 +37,6 @@ const TitleComponent = () => {
     return (
         <div className="flex items-center justify-between uppercase text-[#B21218] pl-[2.5%]">
             <h3 className="font-bold text-lg">Giáo viên Mapstudy</h3>
-            <Link className="cursor-pointer" href="#">
-                <p className="text-cp font-medium">Xem tất cả</p>
-            </Link>
         </div>
     )
 }
